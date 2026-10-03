@@ -1,9 +1,10 @@
+import { useSession } from "@/entities/session";
+import { ChatPage } from "@/pages/chat";
+import { LoginPage } from "@/pages/login";
+
 function App() {
-    return (
-        <>
-            <h1 className="text-3xl font-bold text-blue-500">MAX</h1>
-        </>
-    );
+    const isLoggedIn = useSession((s) => s.credentials !== null);
+    return isLoggedIn ? <ChatPage /> : <LoginPage />;
 }
 
 export default App;
