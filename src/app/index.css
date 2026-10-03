@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@theme {
+    --color-app: #0f0f12;
+    --color-panel: #17181c;
+    --color-field: #2c2d30;
+    --color-selected: #2c2d37;
+    --color-bubble-in: #343643;
+    --color-accent: #007aff;
+    --color-muted: #848587;
+    --color-disabled: #333438;
+    --font-sans: Inter, Roboto, "Segoe UI", system-ui, sans-serif;
+}
+
+@layer base {
+    body {
+        background-color: var(--color-app);
+        color: #fff;
+        font-family: var(--font-sans);
+    }
+}
+
+@utility bg-space-pattern {
+    background-color: var(--color-app);
+    background-image: url("../shared/assets/pattern-space.svg");
+    background-size: 280px 280px;
+}
+
+@utility bg-bubble-out {
+    background-image: linear-gradient(135deg, #6167e1, #854cb8);
+}

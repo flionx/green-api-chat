@@ -4,7 +4,7 @@ import { useSession } from "@/entities/session";
 import { loginSchema } from "../model/schema";
 
 const inputClass =
-    "w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200";
+    "bg-field placeholder:text-muted focus:ring-accent w-full rounded-2xl px-4 py-3.5 text-base text-white ring-1 ring-transparent outline-none transition";
 
 export function LoginForm() {
     const login = useSession((s) => s.login);
@@ -54,7 +54,7 @@ export function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4" noValidate>
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-700">
+            <label className="text-muted flex flex-col gap-1.5 text-sm font-medium">
                 idInstance
                 <input
                     className={inputClass}
@@ -66,7 +66,7 @@ export function LoginForm() {
                 />
             </label>
 
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-700">
+            <label className="text-muted flex flex-col gap-1.5 text-sm font-medium">
                 apiTokenInstance
                 <input
                     className={inputClass}
@@ -77,7 +77,7 @@ export function LoginForm() {
                 />
             </label>
 
-            <details className="text-sm text-slate-500">
+            <details className="text-muted text-sm">
                 <summary className="cursor-pointer select-none">Адрес API (необязательно)</summary>
                 <input
                     className={`${inputClass} mt-2`}
@@ -89,15 +89,18 @@ export function LoginForm() {
             </details>
 
             {error && (
-                <p role="alert" className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
+                <p
+                    role="alert"
+                    className="rounded-2xl bg-red-500/10 px-4 py-3 text-sm text-red-400"
+                >
                     {error}
                 </p>
             )}
 
             <button
                 type="submit"
-                disabled={loading}
-                className="rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-wait disabled:opacity-60"
+                disabled={loading || !idInstance.trim() || !apiTokenInstance.trim()}
+                className="bg-accent disabled:bg-disabled disabled:text-muted rounded-2xl px-4 py-3.5 font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:hover:brightness-100"
             >
                 {loading ? "Проверяем..." : "Войти"}
             </button>
