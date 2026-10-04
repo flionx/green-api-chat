@@ -8,3 +8,7 @@ export const checkAccountSchema = z.object({
     exist: z.boolean(),
     chatId: z.string().nullish()
 });
+
+export const sendMessageSchema = z.object({
+    idMessage: z.string()
+});
