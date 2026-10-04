@@ -23,7 +23,7 @@ export function Sidebar() {
                 <button
                     onClick={() => setCreating((v) => !v)}
                     aria-label={creating ? "Закрыть" : "Новый чат"}
-                    className="bg-accent flex size-9 items-center justify-center rounded-full transition hover:brightness-110"
+                    className="bg-accent flex size-9 cursor-pointer items-center justify-center rounded-full transition hover:brightness-110"
                 >
                     {creating ? <X size={20} /> : <Plus size={20} />}
                 </button>
@@ -33,7 +33,7 @@ export function Sidebar() {
                 {creating && <NewChatForm onCreated={() => setCreating(false)} />}
             </div>
 
-            <nav className="flex-1 overflow-y-auto px-3">
+            <nav className="scroll-thin flex-1 overflow-y-auto px-3">
                 {chats.length === 0 ? (
                     <p className="text-muted px-3 py-8 text-center text-sm">
                         Чатов пока нет. Нажмите "+", чтобы начать переписку.
@@ -54,7 +54,7 @@ export function Sidebar() {
             <footer className="border-t border-white/5 p-3">
                 <button
                     onClick={logout}
-                    className="text-muted flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm transition hover:bg-white/5 hover:text-white"
+                    className="text-muted flex w-full cursor-pointer items-center gap-3 rounded-2xl px-3 py-3 text-sm transition hover:bg-white/5 hover:text-white"
                 >
                     <LogOut size={18} />
                     Выйти

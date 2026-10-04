@@ -27,7 +27,7 @@ export function MessageList({ messages, onRetry }: MessageListProps) {
 
     return (
         <div ref={ref} onScroll={handleScroll} className="flex-1 overflow-y-auto px-4 py-4 md:px-6">
-            <div className="flex min-h-full flex-col justify-end gap-1.5">
+            <div className="mx-auto flex min-h-full w-full max-w-180 flex-col justify-end gap-1.5">
                 {count === 0 ? (
                     <p className="text-muted self-center pb-6 text-sm">
                         Сообщений пока нет. Напишите первым.

@@ -46,7 +46,7 @@ export function MessageBubble({ message, onRetry }: MessageBubbleProps) {
                     {onRetry && (
                         <button
                             onClick={() => onRetry(message)}
-                            className="font-semibold underline"
+                            className="cursor-pointer font-semibold underline"
                         >
                             Повторить
                         </button>

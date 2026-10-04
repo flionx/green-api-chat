@@ -100,7 +100,7 @@ export function LoginForm() {
             <button
                 type="submit"
                 disabled={loading || !idInstance.trim() || !apiTokenInstance.trim()}
-                className="bg-accent disabled:bg-disabled disabled:text-muted rounded-2xl px-4 py-3.5 font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:hover:brightness-100"
+                className="bg-accent disabled:bg-disabled disabled:text-muted cursor-pointer rounded-2xl px-4 py-3.5 font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:hover:brightness-100"
             >
                 {loading ? "Проверяем..." : "Войти"}
             </button>

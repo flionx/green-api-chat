@@ -20,7 +20,7 @@ export function ChatWindow() {
                         <button
                             onClick={() => selectChat(null)}
                             aria-label="Назад к списку чатов"
-                            className="rounded-full p-1.5 transition hover:bg-white/10 md:hidden"
+                            className="cursor-pointer rounded-full p-1.5 transition hover:bg-white/10"
                         >
                             <ArrowLeft size={22} />
                         </button>

@@ -1,5 +1,5 @@
 import { useRef, useState, type KeyboardEvent } from "react";
-import { SendHorizontal } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 const MAX_LENGTH = 4000;
 
@@ -15,7 +15,7 @@ export function MessageInput({ onSend }: MessageInputProps) {
         const el = ref.current;
         if (!el) return;
         el.style.height = "auto";
-        el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
+        el.style.height = `${Math.min(el.scrollHeight, 240)}px`;
     }
 
     function submit() {
@@ -36,8 +36,8 @@ export function MessageInput({ onSend }: MessageInputProps) {
     const empty = text.trim().length === 0;
 
     return (
-        <div className="px-3 pb-3 md:px-6 md:pb-4">
-            <div className="bg-panel flex items-end gap-2 rounded-3xl py-2 pr-2 pl-5">
+        <div className="px-4 pb-4">
+            <div className="bg-panel mx-auto flex min-h-12 w-full max-w-180 items-end gap-2 rounded-2xl py-1.5 pr-1.5 pl-5">
                 <textarea
                     ref={ref}
                     rows={1}
@@ -50,16 +50,17 @@ export function MessageInput({ onSend }: MessageInputProps) {
                     onKeyDown={handleKeyDown}
                     placeholder="Сообщение"
                     aria-label="Сообщение"
-                    className="placeholder:text-muted max-h-40 flex-1 resize-none self-center bg-transparent py-1.5 text-base outline-none"
+                    className="scroll-thin placeholder:text-muted max-h-60 flex-1 resize-none self-center bg-transparent text-base outline-none"
                 />
-                <button
-                    onClick={submit}
-                    disabled={empty}
-                    aria-label="Отправить"
-                    className="bg-accent disabled:bg-disabled disabled:text-muted flex size-10 shrink-0 items-center justify-center rounded-full transition hover:brightness-110 disabled:cursor-not-allowed disabled:hover:brightness-100"
-                >
-                    <SendHorizontal size={20} />
-                </button>
+                {!empty && (
+                    <button
+                        onClick={submit}
+                        aria-label="Отправить"
+                        className="bg-accent flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full transition hover:brightness-110"
+                    >
+                        <ArrowUp size={22} />
+                    </button>
+                )}
             </div>
         </div>
     );

@@ -29,3 +29,8 @@
 @utility bg-bubble-out {
     background-image: linear-gradient(135deg, #6167e1, #854cb8);
 }
+
+@utility scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #3b3c44 transparent;
+}
