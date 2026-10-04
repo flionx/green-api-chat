@@ -1,13 +1,19 @@
+import { formatTime } from "@/shared/lib";
 import { Avatar } from "@/shared/ui";
-import type { Chat } from "../model/types";
+import type { Chat, Message } from "../model/types";
 
 interface ChatListItemProps {
     chat: Chat;
+    lastMessage?: Message;
     active: boolean;
     onClick: () => void;
 }
 
-export function ChatListItem({ chat, active, onClick }: ChatListItemProps) {
+export function ChatListItem({ chat, lastMessage, active, onClick }: ChatListItemProps) {
+    const preview = lastMessage
+        ? `${lastMessage.direction === "out" ? "Вы: " : ""}${lastMessage.text}`
+        : "Нет сообщений";
+
     return (
         <button
             onClick={onClick}
@@ -16,11 +22,16 @@ export function ChatListItem({ chat, active, onClick }: ChatListItemProps) {
             }`}
         >
             <Avatar name={chat.name} />
-            <div className="min-w-0">
-                <div className="truncate font-semibold">{chat.name}</div>
-                <div className="text-muted truncate text-sm">
-                    {chat.phone ? `+${chat.phone}` : "Входящий чат"}
+            <div className="min-w-0 flex-1">
+                <div className="flex items-baseline justify-between gap-2">
+                    <span className="truncate font-semibold">{chat.name}</span>
+                    {lastMessage && (
+                        <span className="text-muted shrink-0 text-xs">
+                            {formatTime(lastMessage.ts)}
+                        </span>
+                    )}
                 </div>
+                <div className="text-muted truncate text-sm">{preview}</div>
             </div>
         </button>
     );
