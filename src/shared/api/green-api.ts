@@ -1,5 +1,11 @@
+import z from "zod";
 import { call, type Credentials } from "./http";
-import { checkAccountSchema, sendMessageSchema, stateInstanceSchema } from "./schemas";
+import {
+    checkAccountSchema,
+    notificationSchema,
+    sendMessageSchema,
+    stateInstanceSchema
+} from "./schemas";
 
 export const getStateInstance = (creds: Credentials) =>
     call(creds, "getStateInstance", stateInstanceSchema);
@@ -14,4 +20,17 @@ export const sendMessage = (creds: Credentials, chatId: string, message: string)
     call(creds, "sendMessage", sendMessageSchema, {
         method: "POST",
         body: { chatId, message }
+    });
+
+export const receiveNotification = (creds: Credentials, signal: AbortSignal) =>
+    call(creds, "receiveNotification", notificationSchema.nullable(), {
+        query: { receiveTimeout: 20 },
+        signal
+    });
+
+export const deleteNotification = (creds: Credentials, receiptId: number, signal: AbortSignal) =>
+    call(creds, "deleteNotification", z.unknown(), {
+        method: "DELETE",
+        tail: `/${receiptId}`,
+        signal
     });
