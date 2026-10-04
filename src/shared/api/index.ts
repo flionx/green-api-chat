@@ -1,3 +1,3 @@
 export { ApiError, type Credentials } from "./http";
-export { getStateInstance } from "./green-api";
+export { getStateInstance, checkAccount } from "./green-api";
 export { resolveApiUrl } from "./resolveApiUrl";
