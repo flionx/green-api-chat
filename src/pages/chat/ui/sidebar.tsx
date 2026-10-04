@@ -6,6 +6,7 @@ import { ChatListItem, useChatStore } from "@/entities/chat";
 
 export function Sidebar() {
     const chats = useChatStore((s) => s.chats);
+    const messages = useChatStore((s) => s.messages);
     const activeChatId = useChatStore((s) => s.activeChatId);
     const selectChat = useChatStore((s) => s.selectChat);
     const logout = useLogout();
@@ -44,6 +45,7 @@ export function Sidebar() {
                             chat={chat}
                             active={chat.id === activeChatId}
                             onClick={() => selectChat(chat.id)}
+                            lastMessage={messages[chat.id]?.at(-1)}
                         />
                     ))
                 )}
