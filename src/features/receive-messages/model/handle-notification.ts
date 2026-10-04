@@ -13,6 +13,8 @@ const RANK: Record<MessageStatus, number> = {
     read: 3
 };
 
+const TEXT_TYPES: readonly string[] = ["textMessage", "extendedTextMessage", "quotedMessage"];
+
 const isDeliveryStatus = (s: string): s is DeliveryStatus => DELIVERY_STATUSES.includes(s);
 
 export function handleNotification(body: unknown): void {
@@ -23,6 +25,9 @@ export function handleNotification(body: unknown): void {
 
     if (data.typeWebhook === "incomingMessageReceived") {
         const sender = data.senderData;
+        const type = data.messageData?.typeMessage;
+        if (!type || !TEXT_TYPES.includes(type)) return;
+
         const text =
             data.messageData?.textMessageData?.textMessage ??
             data.messageData?.extendedTextMessageData?.text;

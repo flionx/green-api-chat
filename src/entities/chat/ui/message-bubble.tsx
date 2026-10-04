@@ -33,7 +33,7 @@ export function MessageBubble({ message, onRetry }: MessageBubbleProps) {
                     outgoing ? "bg-bubble-out rounded-br-md" : "bg-bubble-in rounded-bl-md"
                 }`}
             >
-                <p className="break-words whitespace-pre-wrap">{message.text}</p>
+                <p className="wrap-break-word whitespace-pre-wrap">{message.text}</p>
                 <div className="mt-0.5 flex items-center justify-end gap-1 text-[11px] text-white/60">
                     {formatTime(message.ts)}
                     {outgoing && <StatusIcon status={message.status} />}
