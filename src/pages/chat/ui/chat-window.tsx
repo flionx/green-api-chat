@@ -31,8 +31,8 @@ export function ChatWindow() {
                         </div>
                     </header>
 
-                    <MessageList key={chat.id} messages={messages} onRetry={retry} />
-                    <MessageInput key={chat.id} onSend={(text) => send(chat.id, text)} />
+                    <MessageList key={`list-${chat.id}`} messages={messages} onRetry={retry} />
+                    <MessageInput key={`input-${chat.id}`} onSend={(text) => send(chat.id, text)} />
                 </>
             ) : (
                 <div className="text-muted flex flex-1 items-center justify-center text-sm">
