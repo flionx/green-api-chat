@@ -16,7 +16,7 @@ export function ChatWindow() {
         >
             {chat ? (
                 <>
-                    <header className="bg-panel flex items-center gap-3 px-4 py-3">
+                    <header className="bg-panel flex items-center gap-3 border-b border-white/5 px-4 py-3">
                         <button
                             onClick={() => selectChat(null)}
                             aria-label="Назад к списку чатов"

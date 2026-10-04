@@ -1,3 +1,3 @@
 export { normalizePhone } from "./phone";
-export { formatTime } from "./time";
+export { dayKey, formatDay, formatListTime, formatTime } from "./time";
 export { sleep } from "./sleep";

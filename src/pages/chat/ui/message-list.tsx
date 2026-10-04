@@ -1,5 +1,6 @@
-import { useLayoutEffect, useRef } from "react";
+import { Fragment, useLayoutEffect, useRef } from "react";
 import { MessageBubble, type Message } from "@/entities/chat";
+import { dayKey, formatDay } from "@/shared/lib";
 
 interface MessageListProps {
     messages: Message[];
@@ -26,14 +27,27 @@ export function MessageList({ messages, onRetry }: MessageListProps) {
     }
 
     return (
-        <div ref={ref} onScroll={handleScroll} className="flex-1 overflow-y-auto px-4 py-4 md:px-6">
+        <div
+            ref={ref}
+            onScroll={handleScroll}
+            className="scroll-thin flex-1 overflow-y-auto px-4 py-4"
+        >
             <div className="mx-auto flex min-h-full w-full max-w-180 flex-col justify-end gap-1.5">
                 {count === 0 ? (
                     <p className="text-muted self-center pb-6 text-sm">
                         Сообщений пока нет. Напишите первым.
                     </p>
                 ) : (
-                    messages.map((m) => <MessageBubble key={m.id} message={m} onRetry={onRetry} />)
+                    messages.map((m, i) => (
+                        <Fragment key={m.id}>
+                            {(i === 0 || dayKey(m.ts) !== dayKey(messages[i - 1].ts)) && (
+                                <div className="my-2 self-center rounded-full bg-[#282c42b2] px-1.5 py-px text-sm text-white backdrop-blur-xl">
+                                    {formatDay(m.ts)}
+                                </div>
+                            )}
+                            <MessageBubble message={m} onRetry={onRetry} />
+                        </Fragment>
+                    ))
                 )}
             </div>
         </div>

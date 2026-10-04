@@ -1,4 +1,4 @@
-import { formatTime } from "@/shared/lib";
+import { formatListTime } from "@/shared/lib";
 import { Avatar } from "@/shared/ui";
 import type { Chat, Message } from "../model/types";
 
@@ -27,7 +27,7 @@ export function ChatListItem({ chat, lastMessage, active, onClick }: ChatListIte
                     <span className="truncate font-semibold">{chat.name}</span>
                     {lastMessage && (
                         <span className="text-muted shrink-0 text-xs">
-                            {formatTime(lastMessage.ts)}
+                            {formatListTime(lastMessage.ts)}
                         </span>
                     )}
                 </div>
