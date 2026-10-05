@@ -4,6 +4,15 @@ A minimal chat client for **MAX** built on top of [GREEN-API](https://green-api.
 Sign in with your instance credentials, start a chat by phone number, send text messages
 and see replies in real time. The UI follows the look of the [web.max.ru](https://web.max.ru/) chat.
 
+- **Live demo:** https://green-chat-max.vercel.app
+
+## Screenshots
+
+<div align="center">
+  <img src="./docs/screenshots/login.png" alt="Sign in" width="45%" />
+  <img src="./docs/screenshots/chat.png" alt="Chat" width="45%" />
+</div>
+
 ## Features
 
 - Sign in with `idInstance` and `apiTokenInstance` (checked via `getStateInstance`)
@@ -109,3 +118,7 @@ Imports go only downwards: `app → pages → features → entities → shared`.
 - Credentials are stored in `localStorage` so a page reload does not sign you out. They are sent
   only to GREEN-API and removed on sign-out. Never commit your token.
 - There is no backend: the browser talks to GREEN-API directly.
+
+## License
+
+Released under the [MIT License](./LICENSE).
