@@ -10,6 +10,24 @@
     --color-muted: #848587;
     --color-disabled: #333438;
     --font-sans: Inter, Roboto, "Segoe UI", system-ui, sans-serif;
+    --animate-float: float 3s ease-in-out infinite;
+    --animate-rotate-slow: rotate-slow 5s linear infinite;
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(10%);
+        }
+    }
+
+    @keyframes rotate-slow {
+        to {
+            transform: rotate(360deg);
+        }
+    }
 }
 
 @layer base {
@@ -33,4 +51,8 @@
 @utility scroll-thin {
     scrollbar-width: thin;
     scrollbar-color: #3b3c44 transparent;
+}
+
+@utility bg-aurora {
+    background: conic-gradient(from 0deg, #1e40af, #6d28d9, #0e7490, #7e22ce, #1e40af);
 }
